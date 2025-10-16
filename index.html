@@ -25,13 +25,49 @@
             <input type="number" id="total" name="total" required>
         </fieldset>
         <fieldset>
-            <label for="tip">Totalsumma</label>
+            <label for="tip">Dricks</label>
             <input type="number" id="tip" name="tip">
         </fieldset>
-        <button type="button">Beräkna</button>
-
+        <button id="btn" type="button">Beräkna</button>
+    </form>
     <script>
+        const btn = document.getElementById("btn");
+        const friendsInput = document.getElementById("friends")
+        const tipInput = document.getElementById("tip")
+        const totalInput = document.getElementById("total")
 
+        btn.addEventListener("click", splitTheBill)
+
+        function splitTheBill() {
+            let split = 0
+            console.log("hello")
+
+            const numOfFriends = parseFloat(friendsInput.value);
+            const numOfTip = parseFloat(tipInput.value);
+            const numTotal = parseFloat(totalInput.value);
+
+            console.log(numOfFriends, numOfTip, numTotal)
+
+            split = calculateSplit(numOfFriends, numOfTip, numTotal) 
+            console.log(split)
+            
+        }
+
+        function calculateSplit(numOfFriends, numOfTip, numTotal) {
+
+            if (!numOfTip) {
+                numOfTip = 0;
+            }
+            
+            if (!numOfFriends) {
+                alert("Friends can not be empty")
+                return
+            }
+            
+            return (numOfTip + numTotal) / numOfFriends
+            
+
+        }
     </script>
 </body>
 </html>
